@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saltfern Realty | The Ridge House, from plot to front door</title>
+<meta name="description" content="Saltfern Realty: walk through a hillside home before you visit. A scroll-driven film tour, from the bare plot to the lights coming on.">
+<meta name="theme-color" content="#070b14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=12">
+<script>try{if(sessionStorage.getItem('sf-motion')==='still')document.documentElement.dataset.motion='still'}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#homes">Skip the tour</a>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+<canvas id="film" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
+<header class="hdr" data-theme="dark">
+  <a class="logo" href="#top" aria-label="Saltfern Realty, home">
+    <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M3 13.5 14 4l11 9.5M6.5 11.5V24h15V11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 24v-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <span>Saltfern</span>
+  </a>
+  <p class="here" aria-live="polite"><i class="dot"></i><span class="sr">You are in: </span><span id="hereName">The plot</span></p>
+  <nav class="nav" aria-label="Main">
+    <a href="#top">The tour</a>
+    <a href="#house">The house</a>
+    <a href="#homes">Homes</a>
+    <a href="#approach">Approach</a>
+    <a class="nav-cta" href="#viewing">Book a viewing</a>
+  </nav>
+</header>
+
+<div class="rail" aria-hidden="true">
+  <span class="rail-word">Scroll</span>
+  <span class="rail-line"><b id="railFill"></b></span>
+  <span class="rail-pct" id="railPct">00</span>
+</div>
+
+<button class="motion" id="motionBtn" type="button" aria-pressed="false">
+  <span class="motion-ico" aria-hidden="true"></span><span id="motionTxt">Pause motion</span>
+</button>
+
+<main id="top">
+
+  <!-- ============ THE JOURNEY (pinned, scroll-scrubbed) ============ -->
+  <section class="journey" id="journey" data-theme="dark" data-label="The plot" aria-label="Scroll tour of The Ridge House">
+    <div class="stage">
+      <div class="scrim" aria-hidden="true"></div>
+
+      <div class="chapters">
+        <article class="ch is-on" data-name="The plot">
+          <p class="label"><b>SF</b><i class="dot"></i><span>Lot 14 · North Coast Road</span></p>
+          <h1 class="display">Before the walls,<br><em>a hillside.</em></h1>
+          <p class="lead">The Ridge House starts as a slab on a plot above the water. Scroll, and watch it become a place you could live in.</p>
+          <p class="hint"><span class="mouse" aria-hidden="true"><i></i></span>Scroll to build</p>
+        </article>
+
+        <article class="ch" data-name="Taking shape">
+          <p class="label"><b>01</b><i class="dot"></i><span>Structure</span></p>
+          <h2 class="display">Taking <em>shape.</em></h2>
+          <p class="lead">Walls first, then the upper floor, then a roof that reaches past them to keep the afternoon sun off the glass.</p>
+        </article>
+
+        <article class="ch" data-name="The exterior">
+          <p class="label"><b>02</b><i class="dot"></i><span>Exterior</span></p>
+          <h2 class="display">Built for the hour<br><em>the light changes.</em></h2>
+          <p class="lead">Pale render, warm timber and a wall of glass facing the water, with the pool set on the edge of the slope.</p>
+        </article>
+
+        <article class="ch" data-name="After dark">
+          <p class="label"><b>03</b><i class="dot"></i><span>Evening</span></p>
+          <h2 class="display">Then the lights<br><em>come on.</em></h2>
+          <p class="lead">Come down to the terrace at seven in the evening. The pool is lit, the doors are open and the sea is still in view.</p>
+        </article>
+
+        <article class="ch" data-name="Step inside">
+          <p class="label"><b>04</b><i class="dot"></i><span>Inside</span></p>
+          <h2 class="display">Now step<br><em>inside.</em></h2>
+          <p class="lead">Living, kitchen and dining share one room that opens straight onto the terrace. The next step is seeing it in person.</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="#viewing">Book a viewing <span class="arr">→</span></a>
+            <a class="btn btn--ghost" href="#house">The details <span class="arr">↓</span></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="tags" id="tags" aria-hidden="true"></div>
+
+      <ol class="tour" aria-hidden="true">
+        <li><span>The plot</span><i><b></b></i></li>
+        <li><span>Structure</span><i><b></b></i></li>
+        <li><span>Exterior</span><i><b></b></i></li>
+        <li><span>Evening</span><i><b></b></i></li>
+        <li><span>Inside</span><i><b></b></i></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ THE HOUSE ============ -->
+  <section class="sec paper" id="house" data-theme="light" data-label="The house">
+    <div class="wrap split">
+      <header class="rv">
+        <p class="label"><b>SF</b><i class="dot"></i><span>The house</span></p>
+        <h2 class="h2">A house on the ridge,<br><em>facing the water.</em></h2>
+        <figure class="plan"><div class="clip"><video class="vid" muted loop playsinline preload="none" poster="media/loops/interior.jpg" data-src="media/loops/interior.mp4" aria-label="Slow camera move through the Ridge House living room at dusk, open to the lit pool terrace" width="1280" height="720"></video><span class="rec" aria-hidden="true"><i></i>Living floor · 19:04</span></div><figcaption>The living floor, open to the terrace</figcaption></figure>
+      </header>
+      <div class="rv">
+        <p class="lead">The Ridge House is a two-storey home on a quarter-acre hillside plot. The living floor opens straight onto a timber deck and a twelve-metre pool. The bedrooms sit above, set back behind a terrace.</p>
+        <dl class="spec">
+          <div><dt>Property type</dt><dd>Detached hillside home</dd></div>
+          <div><dt>Bedrooms</dt><dd>3, all en suite</dd></div>
+          <div><dt>Internal area</dt><dd>3,150 sq ft over two levels</dd></div>
+          <div><dt>Plot</dt><dd>11,200 sq ft</dd></div>
+          <div><dt>Outside</dt><dd>Deck, pool and roof terrace</dd></div>
+          <div><dt>Guide price</dt><dd>US$1,480,000</dd></div>
+        </dl>
+        <figure class="sun" aria-label="Diagram: the terrace faces west and holds the sun from early afternoon until sunset">
+          <svg viewBox="0 0 420 150" role="img" aria-hidden="true">
+            <path class="sun-arc" d="M30 124 A180 150 0 0 1 390 124" pathLength="1"/>
+            <line class="sun-base" x1="14" y1="124" x2="406" y2="124" pathLength="1"/>
+            <g class="sun-ticks"><line x1="30" y1="118" x2="30" y2="130"/><line x1="210" y1="118" x2="210" y2="130"/><line x1="390" y1="118" x2="390" y2="130"/></g>
+            <path class="sun-house" d="M178 124v-22h64v22M170 102h80M186 102v-14h48v14M180 88h60" pathLength="1"/>
+            <circle class="sun-dot" r="7"><animateMotion dur="9s" repeatCount="indefinite" path="M30 124 A180 150 0 0 1 390 124" keyPoints="0;1" keyTimes="0;1" calcMode="linear"/></circle>
+            <text x="30" y="146">East · 06:10</text><text x="210" y="146" text-anchor="middle">Terrace</text><text x="390" y="146" text-anchor="end">West · 18:20</text>
+          </svg>
+          <figcaption>The terrace faces west: sun from early afternoon to sunset.</figcaption>
+        </figure>
+        <a class="btn btn--dark" href="#viewing">Arrange a visit <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TICKER (motion graphic) ============ -->
+  <div class="ticker paper" aria-hidden="true" data-theme="light" data-label="Homes">
+    <div class="ticker-track">
+      <span>Hillside</span><i></i><span><em>Waterfront</em></span><i></i><span>Garden</span><i></i><span><em>Viewings by appointment</em></span><i></i><span>North Coast</span><i></i><span><em>Three homes this season</em></span><i></i>
+      <span>Hillside</span><i></i><span><em>Waterfront</em></span><i></i><span>Garden</span><i></i><span><em>Viewings by appointment</em></span><i></i><span>North Coast</span><i></i><span><em>Three homes this season</em></span><i></i>
+    </div>
+  </div>
+
+  <!-- ============ HOMES ============ -->
+  <section class="sec paper paper--2" id="homes" data-theme="light" data-label="Homes">
+    <div class="wrap">
+      <header class="center rv">
+        <p class="label"><b>SF</b><i class="dot"></i><span>Homes for sale</span></p>
+        <h2 class="h2">We don't describe a home.<br><em>We walk you through it.</em></h2>
+      </header>
+      <div class="homes" id="homesGrid">
+        <article class="home rv">
+          <a class="home-media" href="#top"><img src="media/shots/ridge.jpg" loading="lazy" alt="The Ridge House at golden hour, seen from above the pool" width="1200" height="800"><video class="vid" muted loop playsinline preload="none" data-src="media/loops/ridge.mp4" aria-hidden="true" tabindex="-1"></video><span class="chip">Tour above</span></a>
+          <div class="home-body">
+            <p class="cat">North Coast Road · Hillside</p>
+            <h3>The Ridge House</h3>
+            <dl class="mini"><div><dt>Beds</dt><dd>3</dd></div><div><dt>Area</dt><dd>3,150 sq ft</dd></div><div><dt>Guide</dt><dd>US$1.48m</dd></div></dl>
+          </div>
+        </article>
+        <article class="home rv">
+          <a class="home-media" href="#viewing"><img src="media/shots/samaan.jpg" loading="lazy" alt="Samaan Court in morning light, seen from the garden" width="1200" height="800"><span class="chip">New</span></a>
+          <div class="home-body">
+            <p class="cat">Samaan Park · Garden</p>
+            <h3>Samaan Court</h3>
+            <dl class="mini"><div><dt>Beds</dt><dd>4</dd></div><div><dt>Area</dt><dd>3,600 sq ft</dd></div><div><dt>Guide</dt><dd>US$1.72m</dd></div></dl>
+          </div>
+        </article>
+        <article class="home rv">
+          <a class="home-media" href="#viewing"><img src="media/shots/bayleaf.jpg" loading="lazy" alt="Bay Leaf Villa at night with the interior lit" width="1200" height="800"><span class="chip">Under offer</span></a>
+          <div class="home-body">
+            <p class="cat">Bay Leaf Lane · Waterfront</p>
+            <h3>Bay Leaf Villa</h3>
+            <dl class="mini"><div><dt>Beds</dt><dd>3</dd></div><div><dt>Area</dt><dd>2,900 sq ft</dd></div><div><dt>Guide</dt><dd>US$1.35m</dd></div></dl>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REEL (full-bleed video + counters) ============ -->
+  <section class="reel" id="reel" data-theme="dark" data-label="Evening on the terrace" aria-label="Evening on the Ridge House terrace">
+    <video class="vid reel-vid" muted loop playsinline preload="none" poster="media/loops/dusk.jpg" data-src="media/loops/dusk.mp4" aria-hidden="true" tabindex="-1"></video>
+    <div class="reel-shade" aria-hidden="true"></div>
+    <div class="wrap reel-in">
+      <p class="label rv"><b>SF</b><i class="dot"></i><span>Seven in the evening</span></p>
+      <h2 class="h2 h2--xl">Some things only<br><em>show up on film.</em></h2>
+      <dl class="stats">
+        <div class="rv"><dd><span data-count="3">3</span></dd><dt>homes on the market this season</dt></div>
+        <div class="rv"><dd><span data-count="1">1</span></dd><dt>agent from first call to the keys</dt></div>
+        <div class="rv"><dd><span data-count="24">24</span><small>h</small></dd><dt>to reply on a working day</dt></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ APPROACH ============ -->
+  <section class="sec paper" id="approach" data-theme="light" data-label="Approach">
+    <div class="wrap split">
+      <header class="rv">
+        <p class="label"><b>SF</b><i class="dot"></i><span>How we sell</span></p>
+        <h2 class="h2">The starting point<br><em>is not the listing.</em></h2>
+        <p class="lead">Before a price or a photograph comes a question: who is this home right for? Everything we show follows from the answer.</p>
+      </header>
+      <ol class="steps">
+        <li class="rv"><b>01</b><div><h3>Understand the house</h3><p>We spend a day in every home before we list it, at the hours people actually live in it.</p></div></li>
+        <li class="rv"><b>02</b><div><h3>Film it honestly</h3><p>Each home gets a scroll tour from the plot to the living room, so what you explore online is what you walk into.</p></div></li>
+        <li class="rv"><b>03</b><div><h3>Show before you travel</h3><p>Buyers abroad can take the tour first, and fly in only for the homes that fit.</p></div></li>
+        <li class="rv"><b>04</b><div><h3>Stay until the keys</h3><p>One agent from first call to handover, including surveys, attorneys and the move itself.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ BRIDGE + CONTACT (particles) ============ -->
+  <div class="night" id="night">
+    <section class="bridge" id="bridge" data-theme="dark" data-label="Next step">
+      <div class="bridge-stage">
+        <h2 class="display bridge-line rv">Have a place in mind?<br><em>Let's find the door.</em></h2>
+        <a class="cue" href="#viewing" aria-label="Go to the viewing form"><i></i></a>
+      </div>
+    </section>
+
+    <section class="sec contact" id="viewing" data-theme="dark" data-label="Book a viewing">
+      <div class="wrap split">
+        <header class="rv">
+          <p class="label"><b>SF</b><i class="dot"></i><span>Book a viewing</span></p>
+          <h2 class="h2 h2--xl">Come and stand<br>in the <em>living room.</em></h2>
+          <p class="lead">Tell us which home caught your eye and when you are free. A few lines are enough to get a date in the diary.</p>
+        </header>
+        <form class="form rv" id="viewForm" novalidate>
+          <label class="f"><span>Name</span><input name="name" type="text" autocomplete="name" placeholder="Your name" required><i></i></label>
+          <label class="f"><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="Your email" required><i></i></label>
+          <label class="f"><span>Which home?</span>
+            <select name="home"><option>The Ridge House</option><option>Samaan Court</option><option>Bay Leaf Villa</option><option>Not sure yet</option></select><i></i></label>
+          <label class="f"><span>Preferred date <small>· optional</small></span><input name="date" type="date"><i></i></label>
+          <label class="f f--wide"><span>Anything we should know?</span><textarea name="note" rows="2" placeholder="Travelling from abroad, need parking, bringing family…"></textarea><i></i></label>
+          <div class="f--wide form-foot">
+            <button class="btn btn--primary btn--lg" type="submit">Request a viewing <span class="arr">→</span></button>
+            <p class="note" id="formNote" role="status">No obligation. We reply within one working day.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="ftr" data-theme="dark">
+      <div class="wrap ftr-in">
+        <div><p class="ftr-brand">Saltfern Realty</p><p>Independent residential agency</p></div>
+        <p class="ftr-note">Concept build. Saltfern Realty, its homes and prices are illustrative, and the imagery is AI-generated.</p>
+        <p>© <span id="yr">2026</span> Saltfern</p>
+      </div>
+    </footer>
+  </div>
+</main>
+
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js","three/addons/":"./vendor/jsm/"}}</script>
+<script type="module" src="js/ui.js?v=3"></script>
+<script type="module" src="js/main.js?v=13"></script>
+</body>
+</html>
