@@ -182,7 +182,8 @@ function resize() {
   view.w = innerWidth; view.h = innerHeight; view.aspect = view.w / view.h;
   renderer.setSize(view.w, view.h, false); composer.setSize(view.w, view.h);
   camera.aspect = view.aspect;
-  if (view.w > 760) camera.setViewOffset(view.w, view.h, -view.w * .15, 0, view.w, view.h);
+  if (view.aspect >= 1.3) camera.setViewOffset(view.w, view.h, -view.w * .15, 0, view.w, view.h);
+  else if (view.w > 760) camera.clearViewOffset();
   else camera.setViewOffset(view.w, view.h, 0, view.h * .15, view.w, view.h);
   camera.updateProjectionMatrix();
   pMat.uniforms.uSize.value = view.h * PR * .11;
@@ -243,10 +244,10 @@ function frame(now) {
   film.style.opacity = mode === 'journey' ? 1 : 0;
   if (mode === 'journey') { drawFilm(tNow); return; }
   {
-    const far = view.aspect < 1 ? 1 + (1 - view.aspect) * 1.9 : 1 + clamp(1.7 - view.aspect, 0, .7) * .5;
+    const far = view.aspect < 1 ? 1 + (1 - view.aspect) * 1.9 + clamp((view.aspect - .6) / .4) * .35 : 1 + clamp(1.7 - view.aspect, 0, .7) * .5;
     camera.position.set(pointer.sx * 2.4, 3.2 + pointer.sy * 1.4, 52 * far); camera.lookAt(0, .4, 0);
     pointsPivot.rotation.set(.16, -.62 + Math.sin(time * .14) * .26 + morphNow * .3, 0);
-    pointsPivot.position.set(view.aspect < 1 ? 0 : 5.6 * clamp((view.aspect - .85) / .8), view.aspect < 1 ? 5 : view.aspect < 1.3 ? -4 : -.4, 0);
+    pointsPivot.position.set(view.aspect < 1 ? 0 : 5.6 * clamp((view.aspect - .85) / .8), view.aspect < 1 ? (view.w > 760 ? 11 : 5) : view.aspect < 1.3 ? -4 : -.4, 0);
     pMat.uniforms.uMorph.value = morphNow; pMat.uniforms.uTime.value = time;
   }
   composer.render();
